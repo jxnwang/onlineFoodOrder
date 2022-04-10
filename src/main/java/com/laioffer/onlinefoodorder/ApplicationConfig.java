@@ -15,6 +15,9 @@ public class ApplicationConfig {
 
     @Bean(name = "sessionFactory")
     public LocalSessionFactoryBean sessionFactory() {
+        //SessionFactory: it is a heavyweight object which usually is created during application start up
+        //for connecting to a database and kept for later use. It also services clients to obtain Session
+        //instances from this factory.
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("com.laioffer.onlinefoodorder.entity");
@@ -24,7 +27,7 @@ public class ApplicationConfig {
 
     @Bean(name = "dataSource")
     public DataSource dataSource() {
-        String RDS_ENDPOINT = "myproject-instance.cyxfbznx4pqt.us-east-2.rds.amazonaws.com";
+        String RDS_ENDPOINT = "project-instance2.ckmh5t31s8zb.us-east-1.rds.amazonaws.com";
         String USERNAME = "admin";
         String PASSWORD = "jx03112363ll";
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
